@@ -210,7 +210,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
                 UISessionValue.Session.ValTimesId = UISessionValue.ValTimes.ValTimesId;
                 UISessionValue.Session.UserId = UISessionValue.User.UserId;
                 Save();
-                //RefreshPreviousWindow();
+                RefreshPreviousWindow();
                 this.Close();
 
 

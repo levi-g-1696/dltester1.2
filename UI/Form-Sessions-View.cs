@@ -93,6 +93,8 @@ namespace UI
                 Methods.CopyPropertiesTo(destinationSelected, UISessionValue.Destination);
                 Methods.CopyPropertiesTo(monListSelected, UISessionValue.MonitorList);
                 Methods.CopyPropertiesTo(valtimeSelected, UISessionValue.ValTimes);
+                Form_Session_NewEdit form_Session_NewEdit = new Form_Session_NewEdit(Entities.Editmode.Edit, this);
+                form_Session_NewEdit.Show();
             }
             
         }
@@ -118,8 +120,7 @@ namespace UI
                 MessageBox.Show("Must create a new session", "",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show("Cannot remove this one , becouse the destination is registered in sessions table", "",
-MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
             if (SessionGridView.SelectedRows.Count != 0)
             {
                 DataGridViewRow row = this.SessionGridView.SelectedRows[0];
