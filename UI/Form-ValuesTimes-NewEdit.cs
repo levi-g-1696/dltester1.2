@@ -17,7 +17,7 @@ namespace UI
     public delegate void ValuesTimesSaveEventHandler(string m, string f, string t);
     public delegate void ValuesTimesSaveEventHandler1(ValuesTime valuesTime, Entities.Editmode savemode);
     public delegate string ValuesTimesReadEventHandler1(int id);
-    public partial class Form_ValuesTimes_NewEdit : Form
+    public partial class Form_ValuesTimes_NewEdit : Form,IForm
     {
        public static event ValuesTimesSaveEventHandler SaveAction;
         public static event ValuesTimesSaveEventHandler1 SaveToDB;
@@ -159,8 +159,8 @@ namespace UI
                 UISessionValue.ValTimes.MonTo = monitorsToValues;
                 UISessionValue.ValTimes.DuringTime = double.Parse(txtDuration.Text);
                 UISessionValue.ValTimes.MonListId = UISessionValue.MonitorList.MonListId;
-                 SaveToDB(UISessionValue.ValTimes, savemode);
-                fatherForm.GridViewRefresh();
+                Save();
+                RefreshPreviousWindow();
                 this.Close();
 
 
@@ -169,8 +169,8 @@ namespace UI
 
             }
         }
-        
-       private bool UIinputValidation()
+
+        public bool UIinputValidation()
         {
             double d;
             bool isValid=true;
@@ -194,6 +194,17 @@ namespace UI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+       
+        public void Save()
+        {
+            SaveToDB(UISessionValue.ValTimes, savemode);
+        }
+
+        public void RefreshPreviousWindow()
+        {
+            fatherForm.GridViewRefresh();
         }
     }
 }

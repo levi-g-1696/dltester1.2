@@ -65,7 +65,7 @@ namespace UI
                 // UISessionValue.Session.MonitorListId = UISessionValue.MonitorList.MonListId;
                 // UISessionValue.Session.MonitorList = UISessionValue.MonitorList;
                 UISessionValue.ValTimes.MonListId = UISessionValue.MonitorList.MonListId;
-
+                UISessionValue.Session.MonitorListId= UISessionValue.MonitorList.MonListId;
 
 
                 fatherForm.txtMonListRefresh();

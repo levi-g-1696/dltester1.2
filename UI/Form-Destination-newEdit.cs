@@ -16,7 +16,7 @@ using System.Net;
 namespace UI
 {
     public delegate void DestSaveEventHanler(Destination dest, Editmode saveMode);
-    public partial class Form_Destination_NewEdit : Form
+    public partial class Form_Destination_NewEdit : Form,IForm
     {
 
         public static event DestSaveEventHanler SaveAction;
@@ -25,6 +25,7 @@ namespace UI
         public Form_Destination_NewEdit(Editmode editmode, Form_DestinationsView form_DestArg)
         {
             InitializeComponent();
+            
             form_Dest = form_DestArg;
             saveMode = editmode;
             if (editmode== Editmode.New) // empty form
@@ -90,9 +91,9 @@ namespace UI
                 UISessionValue.Destination.SrvPassword = txtPassword.Text;
                 UISessionValue.Destination.Name = txtName.Text;
                 UISessionValue.Destination.Ipaddress = txtIP.Text;
+                Save();
 
-                SaveAction(UISessionValue.Destination,saveMode);
-                form_Dest.DestGridRefresh();
+                RefreshPreviousWindow();
                 this.Close();
             }
 
@@ -112,7 +113,7 @@ namespace UI
         }
 
         //###########################################################
-        private bool UIinputValidation()
+        public bool UIinputValidation()
         {
             int p;
             bool isValid = true;
@@ -161,6 +162,16 @@ namespace UI
             return isValid;
         }
 
+       
 
+        public void Save()
+        {
+            SaveAction(UISessionValue.Destination, saveMode);
+        }
+
+        public void RefreshPreviousWindow()
+        {
+            form_Dest.DestGridRefresh();
+        }
     }
 }

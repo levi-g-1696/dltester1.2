@@ -5801,11 +5801,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user22\\Desktop\\KURS DOCS\\1project meadleway\\test\\dltester1.1 - Copy\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\user22\\Desktop\\KURS DOCS\\1project meadleway\\test\\dltester1.2\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\user22\\Desktop\\KURS DOCS\\1project meadleway\\test\\dltester1.1 - Copy\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\user22\\Desktop\\KURS DOCS\\1project meadleway\\test\\dltester1.2\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\user22\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user22\\Desktop\\KURS DOCS\\1project meadleway\\test\\dltester1.1 - Copy\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\user22\\Desktop\\KURS DOCS\\1project meadleway\\test\\dltester1.2\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user22\\AppData\\Roaming\\NuGet\\NuGet.Config",

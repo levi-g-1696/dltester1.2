@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "urLhWhTPSZdtpqKkG63staHsdb77CE/qP6b1W6kySHC8Xs0c+tH7oKR/okzfEk9uXp3N8SN1AAxUNY0zXM+6Ag==",
+  "dgSpecHash": "b58Us19s49m3bkhLcKF4mAbVIcgXNMd9SS4fF+tojmoU5zsx6vRmUkqi9fBZzoNWn7mA2Yasm9UoSb517ZUrEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user22\\Desktop\\KURS DOCS\\1project meadleway\\test\\dltester1.1 - Copy\\Entities\\Entities.csproj",
+  "projectFilePath": "C:\\Users\\user22\\Desktop\\KURS DOCS\\1project meadleway\\test\\dltester1.2\\Entities\\Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user22\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\user22\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

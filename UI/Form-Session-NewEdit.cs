@@ -17,7 +17,7 @@ namespace UI
     public delegate void SessionSaveEventHandler(Session s, Editmode saveMode);
     public delegate void DestinationsReadEventHandler(Destination d);
 
-    public partial class Form_Session_NewEdit : Form
+    public partial class Form_Session_NewEdit : Form, IForm
     {
         public static event SessionSaveEventHandler SaveAction;
        
@@ -32,6 +32,7 @@ namespace UI
 
             if (editmode == Editmode.New) // empty form
             {
+                InitFormValues();
                 cmbExpiration.Items.Insert(0, "Select");
 
                 mtxtNumTiming.Text = "60";
@@ -41,7 +42,9 @@ namespace UI
                 txtDestination.Text = UISessionValue.Destination.DestinationId.ToString() + "-" + UISessionValue.Destination.Name;
                 UISessionValue.Session.CreationDate = DateTime.Now;
                 txtCreationDate.Text = UISessionValue.Session.CreationDate.Value.ToString();
-
+                cmbFileType.SelectedIndex = 0;
+                UISessionValue.Session.MonitorListId = -1;
+                UISessionValue.MonitorList.MonListId = -1;
 
 
 
@@ -206,8 +209,8 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
                 UISessionValue.Session.DestinationId = UISessionValue.Destination.DestinationId;
                 UISessionValue.Session.ValTimesId = UISessionValue.ValTimes.ValTimesId;
                 UISessionValue.Session.UserId = UISessionValue.User.UserId;
-             SaveAction(UISessionValue.Session, saveMode);
-                fatherForm.GridViewRefresh();
+                Save();
+                //RefreshPreviousWindow();
                 this.Close();
 
 
@@ -238,7 +241,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
         {
 
         }
-        private bool UIinputValidation()
+        public bool UIinputValidation()
         {
          
             bool isValid=true;
@@ -258,14 +261,14 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
                       }   */
 
             //==========       MonitorList  ===================
-            /*    if (UISessionValue.MonitorListId < 0)
+               if (UISessionValue.Session.MonitorListId < 0)
                 {
-                    txtMonList.Text = "???";
+                  //  txtMonList.Text = " ";
 
                     txtMonList.BackColor = Color.Salmon;
                     isValid = false;
                 }
-            */
+           
             //================ expiration ==========
             if ((cmbExpiration.SelectedIndex == 0) || (cmbExpiration.SelectedItem == null))
             {
@@ -312,6 +315,41 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         private void btnCrDate_Click(object sender, EventArgs e)
         {
+
+        }
+
+       
+
+        public void Save()
+        {
+            SaveAction(UISessionValue.Session, saveMode);
+        }
+
+        public void RefreshPreviousWindow()
+        {
+            fatherForm.GridViewRefresh();
+        }
+
+       public void InitFormValues()
+        {
+            cmbExpiration.Items.Insert(0, "Select");
+
+            mtxtNumTiming.Text = "60";
+            cmbSecMinHourTiming.SelectedIndex = 0;
+            cmbExpiration.SelectedIndex = 2;
+            if (UISessionValue.MonitorListId < 0) { btnValSchedEdit.Visible = false; }
+            //txtDestination.Text = UISessionValue.Destination.DestinationId.ToString() + "-" + UISessionValue.Destination.Name;
+            txtDestination.Text = "";
+            UISessionValue.Session.CreationDate = DateTime.Now;
+            txtCreationDate.Text = UISessionValue.Session.CreationDate.Value.ToString();
+            cmbFileType.SelectedIndex = 0;
+            UISessionValue.Session.MonitorListId = -1;
+            UISessionValue.MonitorList.MonListId = -1;
+            UISessionValue.ValTimes.MonListId  = UISessionValue.MonitorList.MonListId ;
+            UISessionValue.Destination.DestinationId = -1;
+            UISessionValue.Session.DestinationId = -1;
+            UISessionValue.ValTimes.ValTimesId = -1;
+            UISessionValue.Session.ValTimesId = -1;
 
         }
     }
